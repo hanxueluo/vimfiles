@@ -63,8 +63,6 @@ syntax enable
 syntax on
 set nobackup
 set nu!
-set tags=tags
-"set autochdir
 call pathogen#infect()
 
 let g:miniBufExplMapWindowsNavVim=1
@@ -83,20 +81,16 @@ nmap wm :WMToggle<cr>
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 nmap <leader>w :WMToggle<cr>
-nmap <C-D>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-D>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-D>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-D>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-D>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-D>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-D>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-D>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap <silent> <F12> :A<CR>
-
-"nnoremap :!cscope -bkR -s 
 
 "
 noremap <C-n> :MBEbn<CR>
@@ -106,7 +100,7 @@ imap <unique> <silent> <F3> <C-O><Plug>LookupFile
 
 nmap <C-S-K> :bd<CR>
 "run current file
-nmap <F5> :!%<CR>
+nmap <F5> :!./%<CR>
 "for python dictionary
 filetype plugin on
 "let g:pydiction_location=$VIMRUNTIME . '/tools/pydiction/complete-dict'
