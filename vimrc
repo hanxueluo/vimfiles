@@ -106,3 +106,4 @@ filetype plugin on
 "let g:pydiction_location=$VIMRUNTIME . '/tools/pydiction/complete-dict'
 
 filetype plugin indent on
+nmap <leader>' :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr> 
