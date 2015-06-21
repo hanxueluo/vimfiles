@@ -8,6 +8,7 @@
 "     dark/light backgrounds
 "   - Thanks to Evgeny Filatov for noticing a nasty bug in Vm_get_line_number :-)
 
+finish
 if exists("loaded_VisualMark")
   finish
 endif
