@@ -155,3 +155,7 @@ let NERDTreeIgnore = ['\.o$', '\~$']
 
 let g:bookmark_sign = '☆'
 let g:bookmark_annotation_sign = '★'
+
+ino  <c-m> <c-r>=TriggerSnippet()<cr>
+snor <c-m> <esc>i<right><c-r>=TriggerSnippet()<cr>
+
