@@ -5,6 +5,8 @@ if g:isWindows
     source $VIMRUNTIME/mswin.vim
     behave mswin
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
+    set t_Co=256
+    let g:Powerline_symbols = 'fancy'
 else
     runtime! debian.vim
 endif
@@ -31,8 +33,6 @@ endif
     Bundle 'majutsushi/tagbar'
     Bundle 'godlygeek/tabular'
     Bundle 'tpope/vim-fugitive'
-
-    Bundle 'vim-scripts/winmanager'
     Bundle 'MattesGroeger/vim-bookmarks'
 
     Bundle 'L9'
@@ -62,6 +62,8 @@ set hlsearch
 set nu!
 set cursorline
 set tags=tags
+"set encoding=utf-8
+set laststatus=2
 au FileType make setlocal noexpandtab
 au BufRead,BufNewFile *.am setlocal noexpandtab
 
@@ -82,28 +84,6 @@ let g:miniBufExplMapCTabSwitchBufs=1
 "let g:miniBufExplMapWindowNavArrows=1
 let g:miniBufExplUseSingleClick=1
 let g:miniBufExplTabWrap=1
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Auto_Update=1
-"nmap wm :WMToggle<cr>
-
-let g:NERDTree_title='NERD Tree'
-let g:Tagbar_title='Tag bar'
-let g:winManagerWindowLayout='NERDTree|Tagbar'
-function! NERDTree_Start()
-    exec 'NERDTree'
-endfunction
-function! NERDTree_IsValid()
-    return 1
-endfunction
-function! Tagbar_Start()
-    exec 'Tagbar'
-endfunction
-function! Tagbar_IsValid()
-    return 1
-endfunction
-
-"autocmd vimenter * NERDTree
 
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
@@ -167,6 +147,5 @@ nmap <Leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <unique> <silent> <F1> <Plug>MarkSet
-let g:Powerline_symbols = 'fancy'
 let NERDTreeIgnore = ['\.o$', '\~$']   
 
