@@ -5,7 +5,6 @@ if g:isWindows
     source $VIMRUNTIME/mswin.vim
     behave mswin
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
-    set t_Co=256
     let g:Powerline_symbols = 'fancy'
     scriptencoding utf-8
 else
@@ -23,7 +22,7 @@ else
     set rtp+=/etc/vim/bundle/vundle/
     call vundle#rc()
     call vundle#begin('/etc/vim/bundle')
-    Bundle 'powerline/powerline'
+    Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 endif
     Bundle 'gmarik/vundle'
     Bundle 'vim-scripts/Conque-Shell'
@@ -48,8 +47,8 @@ endif
     Bundle 'vim-scripts/a.vim'
     Bundle 'vim-scripts/showhide.vim'
 
-    "Bundle 'Valloric/YouCompleteMe'
-    "Bundle 'msanders/snipmate.vim'
+    Bundle 'Valloric/YouCompleteMe'
+    Bundle 'msanders/snipmate.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -63,6 +62,7 @@ set hlsearch
 set nu!
 set cursorline
 set tags=tags
+set t_Co=256
 "set encoding=utf-8
 set laststatus=2
 au FileType make setlocal noexpandtab
@@ -77,7 +77,7 @@ elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
 
-let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_match_window='top,order:ttb'
 let g:go_fmt_autosave =1
 let g:miniBufExplCycleArround=1
 let g:miniBufExplMapWindowsNavVim=1
@@ -147,7 +147,7 @@ nmap <Leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <silent> <F1> <Plug>MarkSet
+nmap <unique> <silent> <F2> <Plug>MarkSet
 let NERDTreeIgnore = ['\.o$', '\~$']   
 
 let g:bookmark_sign = '☆'
