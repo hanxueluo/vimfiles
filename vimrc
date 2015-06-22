@@ -7,6 +7,7 @@ if g:isWindows
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
     set t_Co=256
     let g:Powerline_symbols = 'fancy'
+    scriptencoding utf-8
 else
     runtime! debian.vim
 endif
@@ -149,3 +150,5 @@ nmap <Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <unique> <silent> <F1> <Plug>MarkSet
 let NERDTreeIgnore = ['\.o$', '\~$']   
 
+let g:bookmark_sign = '☆'
+let g:bookmark_annotation_sign = '★'
