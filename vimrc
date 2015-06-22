@@ -23,6 +23,7 @@ else
     call vundle#rc()
     call vundle#begin('/etc/vim/bundle')
     Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+    Bundle 'Valloric/YouCompleteMe'
 endif
     Bundle 'gmarik/vundle'
     Bundle 'vim-scripts/Conque-Shell'
@@ -47,7 +48,6 @@ endif
     Bundle 'vim-scripts/a.vim'
     Bundle 'vim-scripts/showhide.vim'
 
-    Bundle 'Valloric/YouCompleteMe'
     Bundle 'msanders/snipmate.vim'
 call vundle#end()
 filetype plugin indent on
@@ -134,6 +134,9 @@ else
     colorscheme slate
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    let g:CCTreeKeyTraceForwardTree = '<Leader>.'
+    let g:CCTreeKeyTraceReverseTree = '<Leader>,'
+    let g:CCTreeKeyToggleWindow = 'wc'
 endif
 
 nmap <Leader>' :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<CR> 
