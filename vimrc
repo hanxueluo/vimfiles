@@ -1,4 +1,4 @@
-let g:isWindows = ($OS == "Windows_NT")
+let g:isWindows = has('win32') || has('win64')
 
 if g:isWindows
     source $VIMRUNTIME/vimrc_example.vim
@@ -11,9 +11,17 @@ endif
 
 set nocompatible
 filetype off
-set rtp+=/etc/vim/bundle/vundle/
-call vundle#rc()
-call vundle#begin('/etc/vim/bundle')
+if g:isWindows
+    set rtp+=$VIM/vimfiles/bundle/vundle/
+    call vundle#rc()
+    call vundle#begin('$VIM/vimfiles/bundle')
+    Bundle 'Lokaltog/vim-powerline'
+else
+    set rtp+=/etc/vim/bundle/vundle/
+    call vundle#rc()
+    call vundle#begin('/etc/vim/bundle')
+    Bundle 'powerline/powerline'
+endif
     Bundle 'gmarik/vundle'
     Bundle 'vim-scripts/Conque-Shell'
     Bundle 'kien/ctrlp.vim'
@@ -23,7 +31,6 @@ call vundle#begin('/etc/vim/bundle')
     Bundle 'majutsushi/tagbar'
     Bundle 'godlygeek/tabular'
     Bundle 'tpope/vim-fugitive'
-    Bundle 'powerline/powerline'
 
     Bundle 'vim-scripts/winmanager'
     Bundle 'MattesGroeger/vim-bookmarks'
@@ -35,7 +42,8 @@ call vundle#begin('/etc/vim/bundle')
     Bundle 'colorselector'
     Bundle 'FuzzyFinder'
     Bundle 'wesleyche/SrcExpl'
-    Bundle 'vim-scripts/mark'
+    "Bundle 'vim-scripts/mark'
+    Bundle 'mbriggs/mark.vim'
     Bundle 'vim-scripts/a.vim'
     Bundle 'vim-scripts/showhide.vim'
 
@@ -52,11 +60,11 @@ set nobackup
 set nowrap
 set hlsearch
 set nu!
+set cursorline
 set tags=tags
 au FileType make setlocal noexpandtab
 au BufRead,BufNewFile *.am setlocal noexpandtab
 
-colorscheme slate
 syntax enable
 syntax on
 
@@ -66,6 +74,7 @@ elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
 
+let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:go_fmt_autosave =1
 let g:miniBufExplCycleArround=1
 let g:miniBufExplMapWindowsNavVim=1
@@ -113,6 +122,7 @@ if g:isWindows
     nmap <F5> :!%<CR>
 
     filetype plugin indent on
+    colorscheme evening
     set diffexpr=MyDiff()
     function MyDiff()
         let opt = '-a --binary '
@@ -140,6 +150,7 @@ if g:isWindows
 else
     nmap <F5> :!./%<CR>
     nmap <F6> :!make<CR>
+    colorscheme slate
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 endif
