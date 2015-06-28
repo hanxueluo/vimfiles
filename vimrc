@@ -7,8 +7,10 @@ if g:isWindows
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
     let g:Powerline_symbols = 'fancy'
     scriptencoding utf-8
+    set t_Co=256
 else
     runtime! debian.vim
+    set t_Co=256
 endif
 
 set nocompatible
@@ -62,7 +64,6 @@ set hlsearch
 set nu!
 set cursorline
 set tags=tags
-set t_Co=256
 "set encoding=utf-8
 set laststatus=2
 au FileType make setlocal noexpandtab
@@ -98,6 +99,10 @@ noremap <C-k>   :MBEbn<CR>
 nmap wn :NERDTreeToggle<CR>
 nmap wm :TagbarToggle<CR>
 nmap wp :SrcExplToggle<CR>
+nmap wq :copen<CR>
+nmap wl :lopen<CR>
+
+imap <C-D> <DEL>
 
 if g:isWindows
     nmap <F5> :!%<CR>
@@ -156,6 +161,6 @@ let NERDTreeIgnore = ['\.o$', '\~$']
 let g:bookmark_sign = '☆'
 let g:bookmark_annotation_sign = '★'
 
-ino  <c-m> <c-r>=TriggerSnippet()<cr>
-snor <c-m> <esc>i<right><c-r>=TriggerSnippet()<cr>
+"ino  <c-m> <c-r>=TriggerSnippet()<cr>
+"snor <c-m> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
