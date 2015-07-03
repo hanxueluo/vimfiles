@@ -135,7 +135,7 @@ if g:isWindows
     endfunction
 else
     nmap <F5> :!./%<CR>
-    nmap <F6> :!make<CR>
+    nmap <F6> :make<CR>
     colorscheme slate
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
