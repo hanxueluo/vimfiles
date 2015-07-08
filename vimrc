@@ -148,7 +148,7 @@ else
     let g:CCTreeKeyToggleWindow = 'wc'
 endif
 
-nmap <Leader>' :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<CR> 
+nmap <Leader>' :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<CR>
 "autocmd FileType log set guifont=Consolas:h8
 
 nmap <Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -160,7 +160,7 @@ nmap <Leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <unique> <silent> <F2> <Plug>MarkSet
-let NERDTreeIgnore = ['\.o$', '\~$']   
+let NERDTreeIgnore = ['\.o$', '\~$']
 
 let g:bookmark_sign = '☆'
 let g:bookmark_annotation_sign = '★'
