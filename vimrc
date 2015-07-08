@@ -102,6 +102,10 @@ nmap wp :SrcExplToggle<CR>
 nmap wq :copen<CR>
 nmap wl :lopen<CR>
 
+nmap <silent> qq :q<CR>
+nmap <silent> qa :qa<CR>
+nmap <silent> q1 :q!<CR>
+
 imap <C-D> <DEL>
 
 if g:isWindows
