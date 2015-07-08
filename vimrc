@@ -93,8 +93,8 @@ nnoremap <silent> <F12> :A<CR>
 nnoremap <silent> <F3> :CtrlP<CR>
 nnoremap <silent> <F8> :CtrlPBufTag<CR>
 nnoremap <silent> <F7> :CtrlPTag<CR>
-noremap <C-j>   :MBEbp<CR>
-noremap <C-k>   :MBEbn<CR>
+noremap  <silent> <C-j>   :MBEbp<CR>
+noremap  <silent> <C-k>   :MBEbn<CR>
 
 nmap wn :NERDTreeToggle<CR>
 nmap wm :TagbarToggle<CR>
