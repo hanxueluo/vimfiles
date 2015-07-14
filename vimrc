@@ -1,7 +1,6 @@
 let g:isWindows = has('win32') || has('win64')
 
 if g:isWindows
-    source $VIMRUNTIME/vimrc_example.vim
     source $VIMRUNTIME/mswin.vim
     behave mswin
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
@@ -12,6 +11,8 @@ else
     runtime! debian.vim
     set t_Co=256
 endif
+
+source $VIMRUNTIME/vimrc_example.vim
 
 set nocompatible
 filetype off
@@ -66,6 +67,9 @@ set cursorline
 set tags=tags
 "set encoding=utf-8
 set laststatus=2
+
+let mapleader=","
+
 au FileType make setlocal noexpandtab
 au BufRead,BufNewFile *.am setlocal noexpandtab
 
@@ -160,6 +164,7 @@ nmap <Leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <unique> <silent> <F2> <Plug>MarkSet
+vmap <unique> <silent> <F2> <Plug>MarkSet
 let NERDTreeIgnore = ['\.o$', '\~$']
 
 let g:bookmark_sign = '☆'
