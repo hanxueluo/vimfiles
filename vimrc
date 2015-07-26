@@ -6,6 +6,7 @@ if g:isWindows
     behave mswin
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
     let g:Powerline_symbols = 'fancy'
+    let Powerline_symbols = 'compatible'
     scriptencoding utf-8
     set t_Co=256
 else
@@ -51,6 +52,7 @@ endif
     Bundle 'vim-scripts/showhide.vim'
 
     Bundle 'msanders/snipmate.vim'
+    Bundle 'hanxueluo/vim-togglequickfix'
 call vundle#end()
 filetype plugin indent on
 
@@ -66,6 +68,7 @@ set cursorline
 set tags=tags
 "set encoding=utf-8
 set laststatus=2
+let mapleader=","
 au FileType make setlocal noexpandtab
 au BufRead,BufNewFile *.am setlocal noexpandtab
 
