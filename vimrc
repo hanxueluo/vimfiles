@@ -14,6 +14,7 @@ else
 endif
 
 source $VIMRUNTIME/vimrc_example.vim
+set mouse=
 
 set nocompatible
 filetype off
