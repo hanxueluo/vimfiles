@@ -4,8 +4,6 @@ if g:isWindows
     source $VIMRUNTIME/mswin.vim
     behave mswin
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
-    let g:Powerline_symbols = 'fancy'
-    let Powerline_symbols = 'compatible'
     scriptencoding utf-8
     set t_Co=256
 else
@@ -22,18 +20,23 @@ if g:isWindows
     set rtp+=$VIM/vimfiles/bundle/vundle/
     call vundle#rc()
     call vundle#begin('$VIM/vimfiles/bundle')
-    Bundle 'Lokaltog/vim-powerline'
 else
     set rtp+=/etc/vim/bundle/vundle/
     call vundle#rc()
     call vundle#begin('/etc/vim/bundle')
-    Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
     Bundle 'Valloric/YouCompleteMe'
 endif
+    Bundle 'vim-airline/vim-airline'
+    Bundle 'mileszs/ack.vim'
+    Bundle 'terryma/vim-multiple-cursors'
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'spf13/vim-colors'
+    Bundle 'spf13/vim-autoclose'
+    Bundle 'tpope/vim-surround'
+    Bundle 'tpope/vim-repeat'
     Bundle 'gmarik/vundle'
     Bundle 'vim-scripts/Conque-Shell'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'vim-scripts/matrix.vim--Yang'
+    Bundle 'ctrlpvim/ctrlp.vim'
     Bundle 'fholgado/minibufexpl.vim'
     Bundle 'scrooloose/nerdtree'
     Bundle 'majutsushi/tagbar'
@@ -45,7 +48,6 @@ endif
     Bundle 'Lokaltog/vim-easymotion'
 
     Bundle 'CCTree'
-    Bundle 'colorselector'
     Bundle 'FuzzyFinder'
     Bundle 'wesleyche/SrcExpl'
     "Bundle 'vim-scripts/mark'
@@ -63,6 +65,7 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set nobackup
+set noswapfile
 set nowrap
 set hlsearch
 set nu!
@@ -70,6 +73,7 @@ set cursorline
 set tags=tags
 "set encoding=utf-8
 set laststatus=2
+
 let mapleader=","
 au FileType make setlocal noexpandtab
 au BufRead,BufNewFile *.am setlocal noexpandtab
@@ -145,6 +149,8 @@ if g:isWindows
 else
     nmap <F5> :!./%<CR>
     nmap <F6> :make<CR>
+    set background=dark
+    "colorscheme solarized
     colorscheme slate
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -181,3 +187,56 @@ function! s:QuickfixPreview()
     execute l:quickfixwinnr . 'wincmd w'
 endfunction
 autocmd BufReadPost quickfix nmap <buffer> p :call <SID>QuickfixPreview()<CR>
+
+
+set wildmenu
+set so=3
+set wildignore=*.o,*~,*.pyc
+nmap j mz:m+<cr>`z
+nmap k mz:m-2<cr>`z
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+vmap j :m'>+<cr>`<my`>mzgv`yo`z
+vmap k :m'<-2<cr>`>my`<mzgv`yo`z
+
+set ruler
+set viminfo^=%
+map <silent> <leader><cr> :noh<cr>
+map <leader>sp :setlocal spell!<cr>
+" ]s [s zg zw z=
+
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+
+vnoremap <silent> gv :call VisualSelection('gv')<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+function! VisualSelection(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
