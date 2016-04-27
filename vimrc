@@ -15,9 +15,9 @@ else
         set t_Co=256
     endif
     runtime! debian.vim
-    source $VIMRUNTIME/vimrc_example.vim
     set mouse=
 endif
+source $VIMRUNTIME/vimrc_example.vim
 if v:version >= 703
     set noundofile
 endif
@@ -36,10 +36,11 @@ else
 endif
     Bundle 'vim-airline/vim-airline'
     Bundle 'mileszs/ack.vim'
+    Bundle 'rking/ag.vim'
     Bundle 'terryma/vim-multiple-cursors'
     Bundle 'altercation/vim-colors-solarized'
     Bundle 'spf13/vim-colors'
-    Bundle 'spf13/vim-autoclose'
+    Bundle 'Townk/vim-autoclose'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-repeat'
     Bundle 'gmarik/vundle'
