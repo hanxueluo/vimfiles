@@ -1,18 +1,26 @@
 let g:isWindows = has('win32') || has('win64')
 
 if g:isWindows
+    " set shell in case of that gvim starts from bash in windows
+    set shell=cmd.exe
+    set shellcmdflag=/c
+    "source $VIMRUNTIME/vimrc_example.vim
     source $VIMRUNTIME/mswin.vim
     behave mswin
     set fencs=utf-8,GB18030,ucs-bom,default,latin1
     scriptencoding utf-8
     set t_Co=256
 else
+    if &ttymouse == 'xterm2'
+        set t_Co=256
+    endif
     runtime! debian.vim
-    set t_Co=256
+    source $VIMRUNTIME/vimrc_example.vim
+    set mouse=
 endif
-
-source $VIMRUNTIME/vimrc_example.vim
-set mouse=
+if v:version >= 703
+    set noundofile
+endif
 
 set nocompatible
 filetype off
@@ -59,6 +67,8 @@ endif
     Bundle 'hanxueluo/vim-togglequickfix'
 call vundle#end()
 filetype plugin indent on
+"let g:airline#extensions#tabline#enabled = 1
+let g:multi_cursor_exit_from_insert_mode = 0
 
 set tabstop=4
 set shiftwidth=4
@@ -121,7 +131,10 @@ if g:isWindows
     nmap <F5> :!%<CR>
 
     filetype plugin indent on
-    colorscheme evening
+    "colorscheme slate
+    "colorscheme evening
+    set background=dark
+    colorscheme solarized
     set diffexpr=MyDiff()
     function MyDiff()
         let opt = '-a --binary '
@@ -149,7 +162,7 @@ if g:isWindows
 else
     nmap <F5> :!./%<CR>
     nmap <F6> :make<CR>
-    set background=dark
+    "set background=light
     "colorscheme solarized
     colorscheme slate
     autocmd StdinReadPre * let s:std_in=1
@@ -172,6 +185,7 @@ nmap <Leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <unique> <silent> <F2> <Plug>MarkSet
 vmap <unique> <silent> <F2> <Plug>MarkSet
+nmap <unique> <silent> <C-S-0> <Plug>MarkClear
 let NERDTreeIgnore = ['\.o$', '\~$']
 
 let g:bookmark_sign = '☆'
@@ -192,11 +206,11 @@ autocmd BufReadPost quickfix nmap <buffer> p :call <SID>QuickfixPreview()<CR>
 set wildmenu
 set so=3
 set wildignore=*.o,*~,*.pyc
-nmap j mz:m+<cr>`z
-nmap k mz:m-2<cr>`z
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-vmap j :m'>+<cr>`<my`>mzgv`yo`z
-vmap k :m'<-2<cr>`>my`<mzgv`yo`z
+"nmap j mz:m+<cr>`z
+"nmap k mz:m-2<cr>`z
+"" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+"vmap j :m'>+<cr>`<my`>mzgv`yo`z
+"vmap k :m'<-2<cr>`>my`<mzgv`yo`z
 
 set ruler
 set viminfo^=%
