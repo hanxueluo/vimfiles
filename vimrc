@@ -1,5 +1,6 @@
 let g:isWindows = has('win32') || has('win64')
 
+source $VIMRUNTIME/vimrc_example.vim
 if g:isWindows
     " set shell in case of that gvim starts from bash in windows
     set shell=cmd.exe
@@ -17,7 +18,6 @@ else
     runtime! debian.vim
     set mouse=
 endif
-source $VIMRUNTIME/vimrc_example.vim
 if v:version >= 703
     set noundofile
 endif
