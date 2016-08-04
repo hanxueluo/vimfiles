@@ -70,6 +70,7 @@ call vundle#end()
 filetype plugin indent on
 "let g:airline#extensions#tabline#enabled = 1
 let g:multi_cursor_exit_from_insert_mode = 0
+let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
 
 set tabstop=4
 set shiftwidth=4
@@ -80,22 +81,22 @@ set noswapfile
 set nowrap
 set hlsearch
 set nu!
-set cursorline
 set tags=tags
 "set encoding=utf-8
 set laststatus=2
 
 let mapleader=","
 au FileType make setlocal noexpandtab
+"au FileType xml  setlocal equalprg=xmllint\ --exc-c14n\ --format\ -
 au BufRead,BufNewFile *.am setlocal noexpandtab
 
 syntax enable
 syntax on
 
 if filereadable("cscope.out")
-    cs add cscope.out
+    cscope add cscope.out
 elseif $CSCOPE_DB != ""
-    cs add $CSCOPE_DB
+    cscope add $CSCOPE_DB
 endif
 
 let g:ctrlp_match_window='top,order:ttb'
@@ -166,12 +167,18 @@ else
     "set background=light
     "colorscheme solarized
     colorscheme slate
+    "colorscheme evening
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
     let g:CCTreeKeyTraceForwardTree = '<Leader>.'
     let g:CCTreeKeyTraceReverseTree = '<Leader>,'
     let g:CCTreeKeyToggleWindow = 'wc'
 endif
+" set cursorline after colorscheme
+set cursorline
+highlight CursorLine cterm=reverse ctermbg=0 term=bold
+set cursorcolumn
+highlight CursorColumn cterm=bold term=bold
 
 nmap <Leader>' :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<CR>
 "autocmd FileType log set guifont=Consolas:h8
@@ -207,11 +214,13 @@ autocmd BufReadPost quickfix nmap <buffer> p :call <SID>QuickfixPreview()<CR>
 set wildmenu
 set so=3
 set wildignore=*.o,*~,*.pyc
-"nmap j mz:m+<cr>`z
-"nmap k mz:m-2<cr>`z
-"" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-"vmap j :m'>+<cr>`<my`>mzgv`yo`z
-"vmap k :m'<-2<cr>`>my`<mzgv`yo`z
+if has('gui_running') 
+    "set winaltkeys=no
+    nmap <silent><m-j> mz:m+<cr>`z
+    nmap <silent><m-k> mz:m-2<cr>`z
+    vmap <silent><m-j> :m'>+<cr>`<my`>mzgv`yo`z
+    vmap <silent><m-k> :m'<-2<cr>`>my`<mzgv`yo`z
+endif
 
 set ruler
 set viminfo^=%
@@ -254,4 +263,5 @@ function! VisualSelection(direction) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
 
