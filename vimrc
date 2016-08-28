@@ -223,7 +223,7 @@ if has('gui_running')
 endif
 
 set ruler
-set viminfo^=%
+"set viminfo^=%
 map <silent> <leader><cr> :noh<cr>
 map <leader>sp :setlocal spell!<cr>
 " ]s [s zg zw z=
