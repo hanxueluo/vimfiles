@@ -1,6 +1,7 @@
 let g:isWindows = has('win32') || has('win64')
 
 source $VIMRUNTIME/vimrc_example.vim
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,default,latin1
 if g:isWindows
     " set shell in case of that gvim starts from bash in windows
     set shell=cmd.exe
@@ -8,7 +9,6 @@ if g:isWindows
     "source $VIMRUNTIME/vimrc_example.vim
     source $VIMRUNTIME/mswin.vim
     behave mswin
-    set fencs=utf-8,GB18030,ucs-bom,default,latin1
     scriptencoding utf-8
     set t_Co=256
 else
