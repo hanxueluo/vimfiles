@@ -17,6 +17,8 @@ else
     endif
     runtime! debian.vim
     set mouse=
+    " fix default errorformat miss match when build ovs 2.5
+    autocmd FileType c compiler gcc
 endif
 if v:version >= 703
     set noundofile
@@ -204,9 +206,18 @@ let g:bookmark_annotation_sign = '★'
 
 " Press 'p' to do the quickfix preview
 function! s:QuickfixPreview()
-    let l:quickfixwinnr = winnr()
+    let l:supportwinid = exists("*win_getid")
+    if l:supportwinid
+        let l:quickfixwinnr = win_getid()
+    else
+        let l:quickfixwinnr = winnr()
+    endif
     execute "normal! \<CR>"
-    execute l:quickfixwinnr . 'wincmd w'
+    if l:supportwinid
+        call win_gotoid(l:quickfixwinnr)
+    else
+        execute l:quickfixwinnr . 'wincmd w'
+    endif
 endfunction
 autocmd BufReadPost quickfix nmap <buffer> p :call <SID>QuickfixPreview()<CR>
 
