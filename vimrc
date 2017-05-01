@@ -112,6 +112,7 @@ let g:miniBufExplTabWrap=1
 
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
+nmap <F5> :!"%:p"<CR>
 nnoremap <silent> <F12> :A<CR>
 nnoremap <silent> <F3> :CtrlP<CR>
 nnoremap <silent> <F8> :CtrlPBufTag<CR>
@@ -132,7 +133,6 @@ nmap <silent> q1 :q!<CR>
 imap <C-D> <DEL>
 
 if g:isWindows
-    nmap <F5> :!%<CR>
 
     filetype plugin indent on
     "colorscheme slate
@@ -164,7 +164,6 @@ if g:isWindows
         silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
     endfunction
 else
-    nmap <F5> :!./%<CR>
     nmap <F6> :make<CR>
     "set background=light
     "colorscheme solarized
