@@ -34,7 +34,7 @@ else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#rc()
     call vundle#begin()
-    Bundle 'Valloric/YouCompleteMe'
+    "Bundle 'Valloric/YouCompleteMe'
 endif
     Bundle 'vim-airline/vim-airline'
     Bundle 'mileszs/ack.vim'
