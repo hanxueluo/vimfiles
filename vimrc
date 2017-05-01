@@ -31,9 +31,9 @@ if g:isWindows
     call vundle#rc()
     call vundle#begin('$VIM/vimfiles/bundle')
 else
-    set rtp+=/etc/vim/bundle/vundle/
+    set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#rc()
-    call vundle#begin('/etc/vim/bundle')
+    call vundle#begin()
     Bundle 'Valloric/YouCompleteMe'
 endif
     Bundle 'vim-airline/vim-airline'
@@ -45,7 +45,7 @@ endif
     Bundle 'Townk/vim-autoclose'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-repeat'
-    Bundle 'gmarik/vundle'
+    Plugin 'VundleVim/Vundle.vim'
     Bundle 'vim-scripts/Conque-Shell'
     Bundle 'ctrlpvim/ctrlp.vim'
     Bundle 'fholgado/minibufexpl.vim'
