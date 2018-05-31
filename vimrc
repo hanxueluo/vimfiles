@@ -30,44 +30,51 @@ if g:isWindows
     set rtp+=$VIM/vimfiles/bundle/vundle/
     call vundle#rc()
     call vundle#begin('$VIM/vimfiles/bundle')
+    Plugin 'Lokaltog/vim-powerline'
 else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#rc()
-    call vundle#begin()
-    "Bundle 'Valloric/YouCompleteMe'
+    call vundle#begin('/etc/vim/bundle')
+    Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+    "Plugin 'Valloric/YouCompleteMe'
 endif
-    Bundle 'vim-airline/vim-airline'
-    Bundle 'mileszs/ack.vim'
-    Bundle 'rking/ag.vim'
-    Bundle 'terryma/vim-multiple-cursors'
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'spf13/vim-colors'
-    Bundle 'Townk/vim-autoclose'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-repeat'
-    Plugin 'VundleVim/Vundle.vim'
-    Bundle 'vim-scripts/Conque-Shell'
-    Bundle 'ctrlpvim/ctrlp.vim'
-    Bundle 'fholgado/minibufexpl.vim'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'majutsushi/tagbar'
-    Bundle 'godlygeek/tabular'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'MattesGroeger/vim-bookmarks'
+    Plugin 'gmarik/vundle'
+    Plugin 'vim-scripts/Conque-Shell'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'vim-scripts/matrix.vim--Yang'
+    Plugin 'fholgado/minibufexpl.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'majutsushi/tagbar'
+    "Plugin 'godlygeek/tabular'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'MattesGroeger/vim-bookmarks'
 
-    Bundle 'L9'
-    Bundle 'Lokaltog/vim-easymotion'
+    Plugin 'L9'
+    Plugin 'Lokaltog/vim-easymotion'
 
-    Bundle 'CCTree'
-    Bundle 'FuzzyFinder'
-    Bundle 'wesleyche/SrcExpl'
-    "Bundle 'vim-scripts/mark'
-    Bundle 'mbriggs/mark.vim'
-    Bundle 'vim-scripts/a.vim'
-    Bundle 'vim-scripts/showhide.vim'
+    Plugin 'CCTree'
+    Plugin 'colorselector'
+    Plugin 'FuzzyFinder'
+    Plugin 'wesleyche/SrcExpl'
+    "Plugin 'vim-scripts/mark'
+    Plugin 'mbriggs/mark.vim'
+    Plugin 'vim-scripts/a.vim'
+    Plugin 'vim-scripts/showhide.vim'
 
-    Bundle 'msanders/snipmate.vim'
-    Bundle 'hanxueluo/vim-togglequickfix'
+    Plugin 'msanders/snipmate.vim'
+    Plugin 'hanxueluo/vim-togglequickfix'
+
+    Plugin 'Yggdroot/LeaderF'
+    Plugin 'dyng/ctrlsf.vim'
+    Plugin 'Shougo/denite.nvim'
+    Plugin 'vim-syntastic/syntastic'
+    Plugin 'jlanzarotta/bufexplorer'
+    Plugin 'fatih/vim-go'
+    Plugin 'Yggdroot/indentLine'
+    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'tell-k/vim-autopep8'
+    Plugin 'neomake/neomake'
+    Plugin 'w0rp/ale'
 call vundle#end()
 filetype plugin indent on
 "let g:airline#extensions#tabline#enabled = 1
