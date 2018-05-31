@@ -39,13 +39,13 @@ else
     "Plugin 'Valloric/YouCompleteMe'
 endif
     Plugin 'gmarik/vundle'
-    Plugin 'vim-scripts/Conque-Shell'
+    "Plugin 'vim-scripts/Conque-Shell'
     Plugin 'kien/ctrlp.vim'
     Plugin 'vim-scripts/matrix.vim--Yang'
-    Plugin 'fholgado/minibufexpl.vim'
+    "Plugin 'fholgado/minibufexpl.vim'
     Plugin 'scrooloose/nerdtree'
-    Plugin 'majutsushi/tagbar'
-    "Plugin 'godlygeek/tabular'
+    "Plugin 'majutsushi/tagbar'
+    Plugin 'godlygeek/tabular'
     Plugin 'tpope/vim-fugitive'
     Plugin 'MattesGroeger/vim-bookmarks'
 
@@ -54,22 +54,26 @@ endif
 
     Plugin 'CCTree'
     Plugin 'colorselector'
-    Plugin 'FuzzyFinder'
+    "Plugin 'FuzzyFinder'
     Plugin 'wesleyche/SrcExpl'
     "Plugin 'vim-scripts/mark'
     Plugin 'mbriggs/mark.vim'
     Plugin 'vim-scripts/a.vim'
     Plugin 'vim-scripts/showhide.vim'
-
-    Plugin 'msanders/snipmate.vim'
+    "Plugin 'msanders/snipmate.vim'
     Plugin 'hanxueluo/vim-togglequickfix'
 
+    Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plugin 'junegunn/fzf.vim'
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'garbas/vim-snipmate'
     Plugin 'Yggdroot/LeaderF'
     Plugin 'dyng/ctrlsf.vim'
     Plugin 'Shougo/denite.nvim'
     Plugin 'vim-syntastic/syntastic'
     Plugin 'jlanzarotta/bufexplorer'
-    Plugin 'fatih/vim-go'
+    Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plugin 'Yggdroot/indentLine'
     Plugin 'jiangmiao/auto-pairs'
     Plugin 'tell-k/vim-autopep8'
