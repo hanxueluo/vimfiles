@@ -44,7 +44,7 @@ endif
     Plugin 'vim-scripts/matrix.vim--Yang'
     "Plugin 'fholgado/minibufexpl.vim'
     Plugin 'scrooloose/nerdtree'
-    "Plugin 'majutsushi/tagbar'
+    Plugin 'majutsushi/tagbar'
     Plugin 'godlygeek/tabular'
     Plugin 'tpope/vim-fugitive'
     Plugin 'MattesGroeger/vim-bookmarks'
