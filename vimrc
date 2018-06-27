@@ -2,6 +2,7 @@ let g:isWindows = has('win32') || has('win64')
 
 source $VIMRUNTIME/vimrc_example.vim
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,default,latin1
+
 if g:isWindows
     " set shell in case of that gvim starts from bash in windows
     set shell=cmd.exe
@@ -128,9 +129,16 @@ nnoremap <silent> <F12> :A<CR>
 nnoremap <silent> <F3> :CtrlP<CR>
 nnoremap <silent> <F8> :CtrlPBufTag<CR>
 nnoremap <silent> <F7> :CtrlPTag<CR>
-noremap  <silent> <C-j>   :MBEbp<CR>
-noremap  <silent> <C-k>   :MBEbn<CR>
+if exists('loaded_minibufexplorer')
+    noremap  <silent> <C-j>   :MBEbp<CR>
+    noremap  <silent> <C-k>   :MBEbn<CR>
+else
+    noremap  <silent> <C-j>   :bp<CR>
+    noremap  <silent> <C-k>   :bn<CR>
+endif
 
+
+nmap wb :BufExplorer<CR>
 nmap wn :NERDTreeToggle<CR>
 nmap wm :TagbarToggle<CR>
 nmap wp :SrcExplToggle<CR>
@@ -285,4 +293,4 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
-
+let skip_defaults_vim = 1 " defaults.vim has beed loaded in vimrc_example.vim
