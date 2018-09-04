@@ -33,13 +33,15 @@ if g:isWindows
     call vundle#begin('$VIM/vimfiles/bundle')
     Plugin 'Lokaltog/vim-powerline'
 else
-    set rtp+=~/.vim/bundle/Vundle.vim
+    " https://github.com/VundleVim/Vundle.vim.git
+    set rtp+=$HOME/.vim/bundle/Vundle.vim/
     call vundle#rc()
-    call vundle#begin('/etc/vim/bundle')
+    call vundle#begin()
     Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
     "Plugin 'Valloric/YouCompleteMe'
 endif
-    Plugin 'gmarik/vundle'
+
+    Plugin 'VundleVim/Vundle.vim.git'
     "Plugin 'vim-scripts/Conque-Shell'
     Plugin 'kien/ctrlp.vim'
     Plugin 'vim-scripts/matrix.vim--Yang'
@@ -51,7 +53,7 @@ endif
     Plugin 'MattesGroeger/vim-bookmarks'
 
     Plugin 'L9'
-    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'easymotion/vim-easymotion'
 
     Plugin 'CCTree'
     Plugin 'colorselector'
