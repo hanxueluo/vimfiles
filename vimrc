@@ -153,6 +153,7 @@ nmap <silent> q1 :q!<CR>
 
 imap <C-D> <DEL>
 
+nmap <F5> :call RunFile()<CR>
 if g:isWindows
 
     filetype plugin indent on
@@ -295,4 +296,16 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
+function! RunFile()
+    let l:isW = has('win32') || has('win64')
+    if &filetype ==#'go'
+        execute "!go run %"
+    else
+        if l:isW
+            execute "!%"
+        else
+            execute "!./%"
+        endif
+    endif
+endfunction
 let skip_defaults_vim = 1 " defaults.vim has beed loaded in vimrc_example.vim
