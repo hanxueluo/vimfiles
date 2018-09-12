@@ -103,7 +103,6 @@ set laststatus=2
 
 let mapleader=","
 au FileType make setlocal noexpandtab
-"au FileType xml  setlocal equalprg=xmllint\ --exc-c14n\ --format\ -
 au BufRead,BufNewFile *.am setlocal noexpandtab
 
 syntax enable
@@ -126,7 +125,6 @@ let g:miniBufExplTabWrap=1
 
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
-nmap <F5> :!"%:p"<CR>
 nnoremap <silent> <F12> :A<CR>
 nnoremap <silent> <F3> :CtrlP<CR>
 nnoremap <silent> <F8> :CtrlPBufTag<CR>
@@ -157,10 +155,7 @@ nmap <F5> :call RunFile()<CR>
 if g:isWindows
 
     filetype plugin indent on
-    "colorscheme slate
-    "colorscheme evening
-    set background=dark
-    colorscheme solarized
+    colorscheme evening
     set diffexpr=MyDiff()
     function MyDiff()
         let opt = '-a --binary '
@@ -187,10 +182,7 @@ if g:isWindows
     endfunction
 else
     nmap <F6> :make<CR>
-    "set background=light
-    "colorscheme solarized
     colorscheme slate
-    "colorscheme evening
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
     let g:CCTreeKeyTraceForwardTree = '<Leader>.'
