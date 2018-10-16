@@ -296,7 +296,7 @@ function! RunFile()
         if l:isW
             execute "!%"
         else
-            execute "!./%"
+            execute "!%:p"
         endif
     endif
 endfunction
