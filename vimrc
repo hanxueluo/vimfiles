@@ -100,6 +100,7 @@ set nu!
 set tags=tags
 "set encoding=utf-8
 set laststatus=2
+set hidden
 
 let mapleader=","
 au FileType make setlocal noexpandtab
