@@ -2,6 +2,7 @@ let g:isWindows = has('win32') || has('win64')
 
 source $VIMRUNTIME/vimrc_example.vim
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,default,latin1
+set encoding=utf-8
 
 if g:isWindows
     " set shell in case of that gvim starts from bash in windows
@@ -21,12 +22,14 @@ else
     " fix default errorformat miss match when build ovs 2.5
     autocmd FileType c compiler gcc
 endif
+
 if v:version >= 703
     set noundofile
 endif
 
 set nocompatible
 filetype off
+
 if g:isWindows
     set rtp+=$VIM/vimfiles/bundle/vundle/
     call vundle#rc()
@@ -37,15 +40,12 @@ else
     set rtp+=$HOME/.vim/bundle/Vundle.vim/
     call vundle#rc()
     call vundle#begin()
-    Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-    "Plugin 'Valloric/YouCompleteMe'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
 endif
 
     Plugin 'VundleVim/Vundle.vim.git'
-    "Plugin 'vim-scripts/Conque-Shell'
-    Plugin 'kien/ctrlp.vim'
     Plugin 'vim-scripts/matrix.vim--Yang'
-    "Plugin 'fholgado/minibufexpl.vim'
     Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
     Plugin 'godlygeek/tabular'
@@ -54,13 +54,13 @@ endif
 
     Plugin 'L9'
     Plugin 'easymotion/vim-easymotion'
+    Plugin 'terryma/vim-multiple-cursors'
 
     Plugin 'CCTree'
     Plugin 'colorselector'
-    "Plugin 'FuzzyFinder'
     Plugin 'wesleyche/SrcExpl'
-    "Plugin 'vim-scripts/mark'
-    Plugin 'mbriggs/mark.vim'
+    Plugin 'inkarkat/vim-ingo-library'
+    Plugin 'inkarkat/vim-mark'
     Plugin 'vim-scripts/a.vim'
     Plugin 'vim-scripts/showhide.vim'
     "Plugin 'msanders/snipmate.vim'
@@ -76,15 +76,17 @@ endif
     Plugin 'Shougo/denite.nvim'
     Plugin 'vim-syntastic/syntastic'
     Plugin 'jlanzarotta/bufexplorer'
-    Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    "Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plugin 'Yggdroot/indentLine'
     Plugin 'jiangmiao/auto-pairs'
     Plugin 'tell-k/vim-autopep8'
     Plugin 'neomake/neomake'
     Plugin 'w0rp/ale'
 call vundle#end()
+
+
 filetype plugin indent on
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:multi_cursor_exit_from_insert_mode = 0
 let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
 
@@ -192,9 +194,9 @@ else
 endif
 " set cursorline after colorscheme
 set cursorline
-highlight CursorLine cterm=reverse ctermbg=0 term=bold
-set cursorcolumn
-highlight CursorColumn cterm=bold term=bold
+"highlight CursorLine cterm=reverse ctermbg=0 term=bold
+"set cursorcolumn
+"highlight CursorColumn cterm=bold term=bold
 
 nmap <Leader>' :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<CR>
 "autocmd FileType log set guifont=Consolas:h8
