@@ -31,57 +31,52 @@ set nocompatible
 filetype off
 
 if g:isWindows
-    set rtp+=$VIM/vimfiles/bundle/vundle/
-    call vundle#rc()
-    call vundle#begin('$VIM/vimfiles/bundle')
-    Plugin 'Lokaltog/vim-powerline'
+    "set rtp+=$VIM/vimfiles/bundle/vundle/
+    call plug#begin('$VIM/vimfiles/plugged')
+    Plug 'Lokaltog/vim-powerline'
 else
-    " https://github.com/VundleVim/Vundle.vim.git
-    set rtp+=$HOME/.vim/bundle/Vundle.vim/
-    call vundle#rc()
-    call vundle#begin()
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
+    "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    call plug#begin('~/.vim/plugged')
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 endif
+    Plug 'vim-scripts/matrix.vim--Yang'
+    Plug 'scrooloose/nerdtree'
+    Plug 'majutsushi/tagbar'
+    Plug 'godlygeek/tabular'
+    Plug 'tpope/vim-fugitive'
+    Plug 'MattesGroeger/vim-bookmarks'
 
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'vim-scripts/matrix.vim--Yang'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'majutsushi/tagbar'
-    Plugin 'godlygeek/tabular'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'MattesGroeger/vim-bookmarks'
+    Plug 'vim-scripts/L9'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'terryma/vim-multiple-cursors'
 
-    Plugin 'vim-scripts/L9'
-    Plugin 'easymotion/vim-easymotion'
-    Plugin 'terryma/vim-multiple-cursors'
+    Plug 'vim-scripts/CCTree'
+    Plug 'vim-scripts/colorselector'
+    Plug 'wesleyche/SrcExpl'
+    Plug 'inkarkat/vim-ingo-library'
+    Plug 'inkarkat/vim-mark'
+    Plug 'vim-scripts/a.vim'
+    Plug 'vim-scripts/showhide.vim'
+    Plug 'hanxueluo/vim-togglequickfix'
 
-    Plugin 'vim-scripts/CCTree'
-    Plugin 'vim-scripts/colorselector'
-    Plugin 'wesleyche/SrcExpl'
-    Plugin 'inkarkat/vim-ingo-library'
-    Plugin 'inkarkat/vim-mark'
-    Plugin 'vim-scripts/a.vim'
-    Plugin 'vim-scripts/showhide.vim'
-    "Plugin 'msanders/snipmate.vim'
-    Plugin 'hanxueluo/vim-togglequickfix'
-
-    Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'garbas/vim-snipmate'
-    Plugin 'Yggdroot/LeaderF'
-    Plugin 'dyng/ctrlsf.vim'
-    Plugin 'Shougo/denite.nvim'
-    Plugin 'vim-syntastic/syntastic'
-    Plugin 'jlanzarotta/bufexplorer'
-    "Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plugin 'Yggdroot/indentLine'
-    Plugin 'jiangmiao/auto-pairs'
-    Plugin 'tell-k/vim-autopep8'
-    Plugin 'neomake/neomake'
-    Plugin 'w0rp/ale'
-call vundle#end()
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'tomtom/tlib_vim'
+    Plug 'garbas/vim-snipmate'
+    Plug 'Yggdroot/LeaderF'
+    Plug 'dyng/ctrlsf.vim'
+    Plug 'Shougo/denite.nvim'
+    Plug 'vim-syntastic/syntastic'
+    Plug 'jlanzarotta/bufexplorer'
+    "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'Yggdroot/indentLine'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'tell-k/vim-autopep8'
+    Plug 'neomake/neomake'
+    Plug 'w0rp/ale'
+call plug#end()
 
 
 filetype plugin indent on
