@@ -46,6 +46,7 @@ endif
     Plug 'majutsushi/tagbar'
     Plug 'godlygeek/tabular'
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
     Plug 'MattesGroeger/vim-bookmarks'
 
     Plug 'vim-scripts/L9'
