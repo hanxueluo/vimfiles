@@ -44,7 +44,7 @@ else
     Plugin 'vim-airline/vim-airline-themes'
 endif
 
-    Plugin 'VundleVim/Vundle.vim.git'
+    Plugin 'VundleVim/Vundle.vim'
     Plugin 'vim-scripts/matrix.vim--Yang'
     Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
@@ -52,12 +52,12 @@ endif
     Plugin 'tpope/vim-fugitive'
     Plugin 'MattesGroeger/vim-bookmarks'
 
-    Plugin 'L9'
+    Plugin 'vim-scripts/L9'
     Plugin 'easymotion/vim-easymotion'
     Plugin 'terryma/vim-multiple-cursors'
 
-    Plugin 'CCTree'
-    Plugin 'colorselector'
+    Plugin 'vim-scripts/CCTree'
+    Plugin 'vim-scripts/colorselector'
     Plugin 'wesleyche/SrcExpl'
     Plugin 'inkarkat/vim-ingo-library'
     Plugin 'inkarkat/vim-mark'
@@ -67,7 +67,6 @@ endif
     Plugin 'hanxueluo/vim-togglequickfix'
 
     Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plugin 'junegunn/fzf.vim'
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
     Plugin 'garbas/vim-snipmate'
