@@ -48,6 +48,7 @@ endif
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'MattesGroeger/vim-bookmarks'
+    Plug 'mileszs/ack.vim'
 
     Plug 'vim-scripts/L9'
     Plug 'easymotion/vim-easymotion'
@@ -76,6 +77,7 @@ endif
     Plug 'jiangmiao/auto-pairs'
     Plug 'tell-k/vim-autopep8'
     Plug 'neomake/neomake'
+
     Plug 'w0rp/ale'
 call plug#end()
 
@@ -214,6 +216,11 @@ let g:bookmark_annotation_sign = '★'
 
 "ino  <c-m> <c-r>=TriggerSnippet()<cr>
 "snor <c-m> <esc>i<right><c-r>=TriggerSnippet()<cr>
+
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " Press 'p' to do the quickfix preview
 function! s:QuickfixPreview()
