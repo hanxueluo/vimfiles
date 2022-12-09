@@ -4,6 +4,8 @@ source $VIMRUNTIME/vimrc_example.vim
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,default,latin1
 set encoding=utf-8
 
+let g:snipMate = { 'snippet_version' : 1 }
+
 if g:isWindows
     " set shell in case of that gvim starts from bash in windows
     set shell=cmd.exe
@@ -43,7 +45,7 @@ else
 endif
     Plug 'vim-scripts/matrix.vim--Yang'
     Plug 'scrooloose/nerdtree'
-    Plug 'majutsushi/tagbar'
+    Plug 'preservim/tagbar'
     Plug 'godlygeek/tabular'
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
